@@ -44,13 +44,9 @@ abstract class InitialCharacter
 
     abstract protected function calculateIntelligence(): int;
 
-    protected function setUpCharacterProfessionStats(): void
+    public function getCharacterName(): string
     {
-        $this->profession = $this->setProfession();
-        $this->strength = $this->calculateStrength();
-        $this->agility = $this->calculateAgility();
-        $this->intelligence = $this->calculateIntelligence();
-        $this->calculateHealth();
+        return $this->characterName;
     }
 
     public function getAttackValue(): int
@@ -90,7 +86,7 @@ abstract class InitialCharacter
 
     protected function calculateHealth(): int
     {
-        return $this->health += $this->strength * $this->level;
+        return $this->health += $this->strength * $this->level * 10;
     }
 
     public function calculateExperience(): int
@@ -113,6 +109,7 @@ abstract class InitialCharacter
 
     public function setEquipmentStatsForCharacter(EquipmentSet $equipmentSet): void
     {
+        $this->equipmentSet = $equipmentSet;
         $this->strength += $equipmentSet->getStrengthValue();
         $this->agility += $equipmentSet->getAgilityValue();
         $this->intelligence += $equipmentSet->getIntelligenceValue();

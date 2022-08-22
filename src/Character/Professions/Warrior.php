@@ -16,6 +16,15 @@ class Warrior extends InitialCharacter
         $this->setUpCharacterProfessionStats();
     }
 
+    protected function setUpCharacterProfessionStats(): void
+    {
+        $this->profession = $this->setProfession();
+        $this->strength = $this->calculateStrength();
+        $this->agility = $this->calculateAgility();
+        $this->intelligence = $this->calculateIntelligence();
+        $this->calculateHealth();
+    }
+
     protected function setProfession(): string
     {
         return $this->profession = Professions::$WARRIOR;
@@ -23,7 +32,7 @@ class Warrior extends InitialCharacter
 
     function calculateStrength(): int
     {
-        return $this->strength = $this->level * 5;
+        return $this->strength = $this->level * 3;
     }
 
     function calculateAgility(): int

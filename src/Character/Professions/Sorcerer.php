@@ -15,6 +15,15 @@ class Sorcerer extends InitialCharacter
         $this->setUpCharacterProfessionStats();
     }
 
+    protected function setUpCharacterProfessionStats(): void
+    {
+        $this->profession = $this->setProfession();
+        $this->strength = $this->calculateStrength();
+        $this->agility = $this->calculateAgility();
+        $this->intelligence = $this->calculateIntelligence();
+        $this->calculateHealth();
+    }
+
     protected function setProfession(): string
     {
         return $this->profession = Professions::$SORCERER;
@@ -32,6 +41,6 @@ class Sorcerer extends InitialCharacter
 
     function calculateIntelligence(): int
     {
-        return $this->intelligence = $this->level * 5;
+        return $this->intelligence = $this->level * 3;
     }
 }

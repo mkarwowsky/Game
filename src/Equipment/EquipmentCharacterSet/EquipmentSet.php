@@ -25,6 +25,7 @@ class EquipmentSet
         $this->setStatsFromItems($rightHandItem, $leftHandItem);
     }
 
+
     private function setStatsFromItems(?Weapon $rightHandItem = null, ?Shield $leftHandItem = null): void
     {
         if ($this->isItTwoHandsItem($this->rightHandItem)) {
@@ -58,14 +59,20 @@ class EquipmentSet
         $this->intelligenceValue += $item->getIntelligence();
     }
 
-    private function setRightHandItem(Weapon $rightHandItem): Weapon
+    private function setRightHandItem(?Weapon $rightHandItem): ?Weapon
     {
-        return $rightHandItem;
+        if ($rightHandItem === null) {
+            return null;
+        } else
+            return $rightHandItem;
     }
 
-    private function setLeftHandItem(Shield $leftHandItem): Shield
+    private function setLeftHandItem(?Shield $leftHandItem): ?Shield
     {
-        return $leftHandItem;
+        if ($leftHandItem === null)
+            return null;
+        else
+            return $leftHandItem;
     }
 
     private function isItTwoHandsItem(Weapon $rightHandItem): bool

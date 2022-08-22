@@ -15,6 +15,15 @@ class Hunter extends InitialCharacter
         $this->setUpCharacterProfessionStats();
     }
 
+    protected function setUpCharacterProfessionStats(): void
+    {
+        $this->profession = $this->setProfession();
+        $this->strength = $this->calculateStrength();
+        $this->agility = $this->calculateAgility();
+        $this->intelligence = $this->calculateIntelligence();
+        $this->calculateHealth();
+    }
+
     protected function setProfession(): string
     {
         return $this->profession = Professions::$HUNTER;
@@ -27,7 +36,7 @@ class Hunter extends InitialCharacter
 
     protected function calculateAgility(): int
     {
-        return $this->agility = $this->level * 5;
+        return $this->agility = $this->level * 2;
     }
 
     protected function calculateIntelligence(): int
